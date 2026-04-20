@@ -32,8 +32,6 @@ It provides secure APIs for managing financial records with role-based access co
 
 ---
 
----
-
 ## 🏗️ Tech Stack
 
 - Node.js
@@ -43,3 +41,29 @@ It provides secure APIs for managing financial records with role-based access co
 - Joi Validation
 
 ---
+
+backend/
+│
+├── config/
+│   └── db.js
+│
+├── controllers/
+│
+├── services/
+│
+├── models/
+│
+├── routes/
+│
+├── middleware/
+│
+├── validators/ 
+│
+├── utils/
+│
+├── app.js        
+├── server.js    
+│
+├── .env
+├── .gitignore
+└── package.json
