@@ -98,6 +98,6 @@ backend/
 
 ## 🚧 Frontend Status
 Status: In Progress (Frontend under development)
-Frontend is currently under development.
-Backend APIs are fully functional and tested using Thunder Client.
+1.Frontend is currently under development.
+2.Backend APIs are fully functional and tested using Thunder Client.
 
