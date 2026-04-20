@@ -41,7 +41,7 @@ It provides secure APIs for managing financial records with role-based access co
 - Joi Validation
 
 ---
-
+```
 backend/
 │
 ├── config/
@@ -67,3 +67,4 @@ backend/
 ├── .env
 ├── .gitignore
 └── package.json
+```
