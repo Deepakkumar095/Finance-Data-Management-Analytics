@@ -1,4 +1,4 @@
-# 💰 Finance Dashboard Backend
+# 💰 Finance Data Management & Analytics
 
 A role-based Finance Dashboard Backend built using Node.js, Express.js, and MongoDB.  
 It provides secure APIs for managing financial records with role-based access control and analytics.
