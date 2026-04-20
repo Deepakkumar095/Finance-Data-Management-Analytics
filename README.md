@@ -1,7 +1,6 @@
 # 💰 Finance Data Management & Analytics
 
-A role-based Finance Dashboard Backend built using Node.js, Express.js, and MongoDB.  
-It provides secure APIs for managing financial records with role-based access control and analytics.
+"A backend system that helps manage income and expense data with secure login and role-based access. Admin controls all data, while users can view their own financial dashboard with insights and analytics."
 
 ---
 
@@ -68,3 +67,37 @@ backend/
 ├── .gitignore
 └── package.json
 ```
+
+## 🔌 API Endpoints
+
+### 🔐 Auth
+- POST `/api/signup`
+- POST `/api/login`
+- POST `/api/logout`
+
+### 📁 Records
+- POST `/api/records/add-record` (Admin only)
+- GET `/api/records/get-records`
+- PUT `/api/records/update-record/:id` (Admin only)
+- DELETE `/api/records/delete-record/:id` (Admin only)
+
+### 📊 Dashboard
+- GET `/api/dashboard`
+
+---
+
+## 🔄 How It Works
+
+1. User logs in → JWT token generated  
+2. Middleware verifies user  
+3. Role-based access applied  
+4. Data filtered based on user role  
+5. Aggregation used for dashboard analytics  
+
+---
+
+## 🚧 Frontend Status
+
+Frontend is currently under development.
+Backend APIs are fully functional and tested using Thunder Client.
+
