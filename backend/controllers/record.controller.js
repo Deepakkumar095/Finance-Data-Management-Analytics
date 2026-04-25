@@ -55,7 +55,8 @@ export const updateRecord = async (req, res) => {
     const record = await updateRecordService(
       req.params.id,
       req.body,
-      req.user._id
+      req.user._id,
+      req.user.role
     );
 
     return res.status(200).json({
@@ -75,7 +76,7 @@ export const updateRecord = async (req, res) => {
 // DELETE
 export const deleteRecord = async (req, res) => {
   try {
-    await deleteRecordService(req.params.id, req.user._id);
+    await deleteRecordService(req.params.id, req.user._id, req.user.role);
 
     return res.status(200).json({
       success: true,

@@ -6,23 +6,19 @@ import User from "../models/user.model.js";
 export const createRecordService = async (data, loggedInUser) => {
   const { userId, amount, type, category, note, date } = data;
 
-  // ✅ role check
   if (loggedInUser.role !== "admin") {
     throw new Error("Only admin can create records");
   }
 
-  // ✅ user check
   const user = await User.findById(userId);
   if (!user) {
     throw new Error("User not found");
   }
 
-  // validation
   if (!amount || !type || !category) {
     throw new Error("Required fields missing");
   }
 
-  // create
   const record = await Record.create({
     user: userId,
     amount,
@@ -36,14 +32,13 @@ export const createRecordService = async (data, loggedInUser) => {
 };
 
 
-// GET (FILTERING)
+// GET
 export const getRecordsService = async (user, query) => {
   const { type, category, startDate, endDate } = query;
 
   let filter = {};
 
-  // ✅ role based filter
-  if (user.role !== "admin") {
+  if (user.role === "user") {
     filter.user = user._id;
   }
 
@@ -52,64 +47,70 @@ export const getRecordsService = async (user, query) => {
 
   if (startDate || endDate) {
     filter.date = {};
-
     if (startDate) filter.date.$gte = new Date(startDate);
     if (endDate) filter.date.$lte = new Date(endDate);
   }
 
-  return await Record.find(filter).sort({ date: -1 });
+  return await Record.find(filter)
+    .sort({ date: -1 })
+    .populate("user", "email"); 
 };
 
 
-// UPDATE
-export const updateRecordService = async (id, data, userId) => {
-  // Find record
+
+export const updateRecordService = async (id, data, loggedInUserId, userRole) => {
+  const { userId, ...rest } = data;
+
   const record = await Record.findById(id);
 
   if (!record) {
     throw new Error("Record not found");
   }
 
-  // check ownership
-  if (record.user.toString() !== userId.toString()) {
+  if (
+    record.user.toString() !== loggedInUserId.toString()
+  ) {
     throw new Error("Unauthorized");
   }
 
-  // Update record
-  const updatedRecord = await Record.findByIdAndUpdate(id, data, {
-    new: true
-  });
+  const updatedRecord = await Record.findByIdAndUpdate(
+    id,
+    {
+      ...rest,
+      user: data.userId || record.user 
+    },
+    { new: true }
+  ).populate("user", "email"); 
 
   return updatedRecord;
 };
 
 
 // DELETE
-export const deleteRecordService = async (id, userId) => {
-  // Find record
+export const deleteRecordService = async (id, userId, userRole) => {
   const record = await Record.findById(id);
 
   if (!record) {
     throw new Error("Record not found");
   }
 
-  // check ownership
-  if (record.user.toString() !== userId.toString()) {
+  
+  if (
+    record.user.toString() !== userId.toString() &&
+    userRole !== "admin"
+  ) {
     throw new Error("Unauthorized");
   }
 
-  // Delete record
   await Record.findByIdAndDelete(id);
 
   return true;
 };
 
 
-//ADMIN ALL RECORDS
+// ADMIN ALL RECORDS
 export const getAllRecordsAdminService = async () => {
-  const records = await Record.find()
-    .populate("user", "email userName role")
+  return await Record.find()
+    .populate("user", "email")
     .sort({ createdAt: -1 });
-
-  return records;
 };

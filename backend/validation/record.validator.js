@@ -31,5 +31,6 @@ export const updateRecordSchema = Joi.object({
   type,
   category,
   note,
-  date
+  date,
+  userId: Joi.string().optional()
 }).min(1);

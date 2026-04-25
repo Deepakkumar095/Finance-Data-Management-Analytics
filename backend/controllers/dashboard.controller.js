@@ -31,7 +31,7 @@ export const getDashboard = async (req, res) => {
 export const getCategorySummary = async (req, res) => {
   try {
     const userId = req.user._id;
-    const categoryData = await getCategorySummaryService(userId);
+    const categoryData = await getCategorySummaryService(userId, req.user.role);
 
     return res.status(200).json({
       success: true,
@@ -52,7 +52,7 @@ export const getCategorySummary = async (req, res) => {
 export const getMonthlyTrends = async (req, res) => {
   try {
     const userId = req.user._id;
-    const monthlyData = await getMonthlyTrendsService(userId);
+    const monthlyData = await getMonthlyTrendsService(userId, req.user.role);
 
     return res.status(200).json({
       success: true,
@@ -73,7 +73,7 @@ export const getMonthlyTrends = async (req, res) => {
 export const getTopSpending = async (req, res) => {
   try {
     const userId = req.user._id;
-    const topSpendingData = await getTopSpendingService(userId);
+    const topSpendingData = await getTopSpendingService(userId, req.user.role);
 
     return res.status(200).json({
       success: true,
@@ -94,7 +94,7 @@ export const getTopSpending = async (req, res) => {
 export const getRecentActivity = async (req, res) => {
   try {
     const userId = req.user._id;
-    const recentActivityData = await getRecentActivityService(userId);
+    const recentActivityData = await getRecentActivityService(userId, req.user.role);
 
     return res.status(200).json({
       success: true,

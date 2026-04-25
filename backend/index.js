@@ -6,9 +6,17 @@ import cookieParser from 'cookie-parser';
 import recordRouter from './routes/record.routes.js';
 import userRouter from './routes/user.routes.js';
 import dashboardRouter from './routes/dashboard.routes.js';
+import cors from "cors";
 dotenv.config();
 
+
 let app = express();
+
+app.use(cors({
+  origin: "http://localhost:5173", // frontend URL
+  credentials: true
+}));
+
 let port = process.env.PORT || 8000;
 
 app.use(express.json());

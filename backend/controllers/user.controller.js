@@ -29,7 +29,7 @@ export const getAllUsers = async (req, res) => {
 // UPDATE USER
 export const updateUser = async (req, res) => {
   try {
-    const user = await updateUserService(req.params.id, req.body);
+    const user = await updateUserService(req.params.id, req.body, req.user);
 
     return res.status(200).json({
       success: true,

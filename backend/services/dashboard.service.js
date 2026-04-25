@@ -4,7 +4,7 @@ import Record from "../models/record.model.js";
 
 export const getDashboardService = async (user) => {
 
-  // 👤 USER DASHBOARD
+  // USER DASHBOARD
   if (user.role === "user") {
 
     const result = await Record.aggregate([
@@ -38,9 +38,9 @@ export const getDashboardService = async (user) => {
     };
   }
   else{
-    // 👨‍💼 ADMIN DASHBOARD
+    //  ADMIN DASHBOARD
 
-    // 1️⃣ overall
+    // overall
     const overall = await Record.aggregate([
         {
         $group: {
@@ -64,7 +64,7 @@ export const getDashboardService = async (user) => {
         totalExpense: 0
     };
 
-    // 2️⃣ user-wise
+    // user-wise
     const users = await Record.aggregate([
         {
         $group: {
@@ -120,9 +120,10 @@ export const getDashboardService = async (user) => {
 
   
 //CATEGORY SUMMARY
-export const getCategorySummaryService = async (userId) => {
+export const getCategorySummaryService = async (userId, userRole) => {
+    const matchStage = (userRole === "user") ? { user: userId } : {};
     return await Record.aggregate([
-        { $match: { user: userId } },
+        { $match: matchStage },
         {
             $group: {
                 _id: "$category",
@@ -145,9 +146,10 @@ export const getCategorySummaryService = async (userId) => {
 };
 
 //MONTHLY TRENDS
-export const getMonthlyTrendsService = async (userId) => {
+export const getMonthlyTrendsService = async (userId, userRole) => {
+    const matchStage = (userRole === "user") ? { user: userId } : {};
     return await Record.aggregate([
-        { $match: { user: userId } },
+        { $match: matchStage },
         {
             $group: {
                 _id: {
@@ -180,9 +182,10 @@ export const getMonthlyTrendsService = async (userId) => {
 };
 
 //TOP SPENDING
-export const getTopSpendingService = async (userId) => {
+export const getTopSpendingService = async (userId, userRole) => {
+    const matchStage = (userRole === "user") ? { user: userId, type: "expense" } : { type: "expense" };
     return await Record.aggregate([
-        { $match: { user: userId, type: "expense" } },
+        { $match: matchStage },
         {
             $group: {
                 _id: "$category",
@@ -202,10 +205,31 @@ export const getTopSpendingService = async (userId) => {
 };
 
 //RECENT ACTIVITY
-export const getRecentActivityService = async (userId) => {
+export const getRecentActivityService = async (userId, userRole) => {
+    const matchStage = (userRole === "user") ? { user: userId } : {};
     return await Record.aggregate([
-        { $match: { user: userId } },
+        { $match: matchStage },
         { $sort: { createdAt: -1 } },
-        { $limit: 5 }
+        { $limit: 5 },
+        {
+            $lookup: {
+                from: "users",
+                localField: "user",
+                foreignField: "_id",
+                as: "userInfo"
+            }
+        },
+        { $unwind: "$userInfo" },
+        {
+            $project: {
+                _id: 1,
+                amount: 1,
+                type: 1,
+                category: 1,
+                note: 1,
+                date: 1,
+                userEmail: "$userInfo.email"
+            }
+        }
     ]);
 };

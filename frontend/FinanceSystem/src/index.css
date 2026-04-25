@@ -1,0 +1,268 @@
+:root {
+  color-scheme: dark;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #0f172a;
+  color: #e2e8f0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body, html, #root {
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: radial-gradient(circle at top, rgba(56, 189, 248, 0.12), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(79, 70, 229, 0.16), transparent 32%),
+    #020617;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app-shell {
+  min-height: 100vh;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.16);
+  background: rgba(15, 23, 42, 0.9);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.brand a {
+  color: #38bdf8;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.login-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: 1rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+.login-status.active {
+  background: rgba(34, 197, 94, 0.18);
+  color: #bbf7d0;
+}
+
+.login-status.inactive {
+  background: rgba(248, 113, 113, 0.18);
+  color: #fecaca;
+}
+
+.status-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.status-label.active {
+  background: rgba(34, 197, 94, 0.18);
+  color: #bbf7d0;
+}
+
+.status-label.inactive {
+  background: rgba(248, 113, 113, 0.18);
+  color: #fecaca;
+}
+
+.topbar nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  align-items: center;
+}
+
+.topbar a,
+.link-button {
+  color: #cbd5e1;
+  text-decoration: none;
+  border: 1px solid transparent;
+  padding: 0.65rem 1rem;
+  border-radius: 0.75rem;
+  transition: background 0.2s ease, color 0.2s ease, border 0.2s ease;
+}
+
+.topbar a.active,
+.topbar a:hover,
+.link-button:hover {
+  background: rgba(56, 189, 248, 0.14);
+  color: #f8fafc;
+}
+
+.link-button {
+  background: none;
+  border: none;
+}
+
+main {
+  padding: 1.5rem;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.card {
+  background: rgba(15, 23, 42, 0.88);
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.18);
+}
+
+.auth-page {
+  min-height: calc(100vh - 86px);
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-card {
+  max-width: 420px;
+}
+
+.auth-card h1,
+.card h1,
+.card h2 {
+  margin: 0 0 0.75rem;
+}
+
+.auth-card form,
+.profile-grid,
+.grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.auth-card label {
+  display: grid;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.auth-card input,
+.auth-card select,
+.page textarea {
+  width: 100%;
+  padding: 0.95rem 1rem;
+  border-radius: 0.85rem;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  background: rgba(15, 23, 42, 0.95);
+  color: #e2e8f0;
+}
+
+button {
+  border: none;
+  border-radius: 0.85rem;
+  padding: 0.95rem 1.1rem;
+  background: #38bdf8;
+  color: #020617;
+  font-weight: 700;
+}
+
+button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.helper-text,
+.section-text {
+  color: #94a3b8;
+  margin: 0;
+}
+
+.form-error,
+.error-card {
+  background: rgba(248, 113, 113, 0.12);
+  color: #fee2e2;
+  border-color: rgba(248, 113, 113, 0.3);
+  padding: 0.95rem 1rem;
+  border-radius: 0.85rem;
+}
+
+.grid.two-up {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 0.95rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+th {
+  color: #94a3b8;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+select,
+input[type="checkbox"] {
+  min-width: 120px;
+}
+
+.danger {
+  background: #ef4444;
+  color: #fff;
+}
+
+.profile-grid {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+@media (max-width: 720px) {
+  .topbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  main {
+    padding: 1rem;
+  }
+}
