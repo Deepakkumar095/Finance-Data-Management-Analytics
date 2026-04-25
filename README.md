@@ -1,6 +1,6 @@
 # Finance Data Management & Analytics
 
-"A Full Mern Stack that helps manage income and expense data with secure login and role-based access. Admin controls all data, while users can view their own financial dashboard with insights and analytics."
+"A Platform where it helps manage income and expense data with secure login and role-based access. Admin controls all data, while users can view their own financial dashboard with insights and analytics."
 
 ---
 
