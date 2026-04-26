@@ -104,7 +104,8 @@ backend/
 ## Analytics:
 <img width="1339" height="618" alt="Screenshot 2026-04-26 233555" src="https://github.com/user-attachments/assets/81f85c71-2a2d-4f50-8215-ac0bc88febcc" />
 ## Graph:
-<img width="1330" height="603" alt="Screenshot 2026-04-26 233613" src="https://github.com/user-attachments/assets/e8af0973-5234-4f14-8e0f-27885be9a9a1" />
+<img width="1339" height="430" alt="image" src="https://github.com/user-attachments/assets/9a103a9a-d4cd-46f2-bed0-106cef43ce06" />
+
 
 ## User Management:
 <img width="1317" height="609" alt="Screenshot 2026-04-26 233631" src="https://github.com/user-attachments/assets/d6ec752b-3ca5-45f8-bb12-7282725e88dc" />
