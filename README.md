@@ -97,8 +97,10 @@ backend/
 ---
 
 # Screenshot
+---
 ## Dashboard:
 <img width="1354" height="606" alt="image" src="https://github.com/user-attachments/assets/11087d8f-b8e8-44b9-84fb-064b47ccaae0" />
+---
 ## Records:
 <img width="1328" height="615" alt="Screenshot 2026-04-26 233529" src="https://github.com/user-attachments/assets/23b19993-0436-437e-95f3-b79f0080f558" />
 ## Analytics:
