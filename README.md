@@ -97,16 +97,16 @@ backend/
 
 # Screenshot
 ---
-### Dashboard:
+### Dashboard
 <img width="1354" height="606" alt="image" src="https://github.com/user-attachments/assets/11087d8f-b8e8-44b9-84fb-064b47ccaae0" />
-### Records:
+### Records
 <img width="1328" height="615" alt="Screenshot 2026-04-26 233529" src="https://github.com/user-attachments/assets/23b19993-0436-437e-95f3-b79f0080f558" />
-### Analytics:
+### Analytics
 <img width="1339" height="618" alt="Screenshot 2026-04-26 233555" src="https://github.com/user-attachments/assets/81f85c71-2a2d-4f50-8215-ac0bc88febcc" />
-### Graph:
+### Graph
 <img width="1339" height="430" alt="image" src="https://github.com/user-attachments/assets/9a103a9a-d4cd-46f2-bed0-106cef43ce06" />
 
 
-### User Management:
+### User Management
 <img width="1317" height="609" alt="Screenshot 2026-04-26 233631" src="https://github.com/user-attachments/assets/d6ec752b-3ca5-45f8-bb12-7282725e88dc" />
 
