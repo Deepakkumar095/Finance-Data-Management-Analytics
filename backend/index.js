@@ -15,7 +15,7 @@ const app = express();
 app.use(cors({
   origin: [
     "http://localhost:5173",
-    "https://magnificent-sfogliatella-a8dc5d.netlify.app/"
+    "https://spiffy-croissant-15c98d.netlify.app"
   ],
   credentials: true
 }));
